@@ -10,7 +10,7 @@
   --surface-2: #f1eef8;
   --ink: #111111;
   --ink-muted: #55526a;
-  --ink-dim: #7d7896;
+  --ink-dim: #6a6585; /* 5.3:1 on --bg, 3.4:1 apart from --ink (two-tone stays visible) */
   --line: #e3dfee;
   --line-strong: #8c88a3;
   --accent: #7149c6;
@@ -24,6 +24,7 @@
   --menu-bg: #f1eef8;
   --menu-ink: #111111;
   --menu-idle: #66627e;
+  --menu-dim: #7a7693; /* other items while one is hovered: 3.8:1 (large text) */
   --menu-muted: #55526a;
   --menu-line: rgb(17 17 17 / 0.12);
   --menu-residual: #e6dcff;
@@ -42,7 +43,7 @@
   --surface-2: #1c1a22;
   --ink: #f9fafc;
   --ink-muted: #a9a6b8;
-  --ink-dim: #7e7a93;
+  --ink-dim: #8f8aa6; /* 5.7:1 on --bg, 3.2:1 apart from --ink */
   --line: #2e2e2e;
   --line-strong: #6f6b82;
   --accent: #7149c6;
@@ -56,6 +57,7 @@
   --menu-bg: #0b0912;
   --menu-ink: #f9fafc;
   --menu-idle: #9a96b0;
+  --menu-dim: #807c94; /* other items while one is hovered: 4.9:1 */
   --menu-muted: #a9a6b8;
   --menu-line: rgb(249 250 252 / 0.12);
   --menu-residual: #241a4a;
@@ -97,6 +99,7 @@
   --color-menu-bg: var(--menu-bg);
   --color-menu-ink: var(--menu-ink);
   --color-menu-idle: var(--menu-idle);
+  --color-menu-dim: var(--menu-dim);
   --color-menu-muted: var(--menu-muted);
   --color-menu-line: var(--menu-line);
   --color-menu-residual: var(--menu-residual);

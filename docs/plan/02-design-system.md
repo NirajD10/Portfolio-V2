@@ -41,7 +41,7 @@ Supporting colours (illustration and shaders only, never UI text): `blue-400 #5B
 | `--surface-2` | `#F1EEF8` | `#1C1A22` | hover cells, meta strips |
 | `--ink` | `#111111` | `#F9FAFC` | 18.1:1 both |
 | `--ink-muted` | `#55526A` | `#A9A6B8` | body secondary · 7.2:1 / 7.9:1 |
-| `--ink-dim` | `#7D7896` | `#7E7A93` | **second line of two-tone headings only** (large text) · 4.0:1 / 4.6:1 |
+| `--ink-dim` | `#6A6585` | `#8F8AA6` | **second line of two-tone headings only** · 5.3:1 / 5.7:1 (raised from `#7D7896` / `#7E7A93` in Phase 2 — too faint) |
 | `--line` | `#E3DFEE` | `#2E2E2E` | decorative rules, frame lines |
 | `--line-strong` | `#8C88A3` | `#6F6B82` | input borders, control outlines · 3.3:1 / 3.7:1 |
 | `--accent` | `#7149C6` | `#7149C6` | fills (buttons, chips) |
@@ -62,7 +62,7 @@ Rule: `#7149C6` on `#111111` is 3.1:1 → fine for buttons, icons, borders and l
 :root,
 [data-theme="light"] {
   --bg: #F9FAFC; --surface: #FFFFFF; --surface-2: #F1EEF8;
-  --ink: #111111; --ink-muted: #55526A; --ink-dim: #7D7896;
+  --ink: #111111; --ink-muted: #55526A; --ink-dim: #6A6585;
   --line: #E3DFEE; --line-strong: #8C88A3;
   --accent: #7149C6; --accent-hover: #7A52CF; --accent-ink: #FFFFFF;
   --accent-text: #5B37A6; --accent-soft: #F3EEFF; --focus: #5B37A6;
@@ -71,7 +71,7 @@ Rule: `#7149C6` on `#111111` is 3.1:1 → fine for buttons, icons, borders and l
 }
 [data-theme="dark"] {
   --bg: #111111; --surface: #161616; --surface-2: #1C1A22;
-  --ink: #F9FAFC; --ink-muted: #A9A6B8; --ink-dim: #7E7A93;
+  --ink: #F9FAFC; --ink-muted: #A9A6B8; --ink-dim: #8F8AA6;
   --line: #2E2E2E; --line-strong: #6F6B82;
   --accent: #7149C6; --accent-hover: #7A52CF; --accent-ink: #FFFFFF;
   --accent-text: #AD86FF; --accent-soft: #321E5E; --focus: #AD86FF;

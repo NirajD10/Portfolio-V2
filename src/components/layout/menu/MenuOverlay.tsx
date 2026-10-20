@@ -35,6 +35,8 @@ export function MenuOverlay() {
   const list = useRef<HTMLOListElement>(null);
   const tl = useRef<gsap.core.Timeline>(null);
   const navigating = useRef(false);
+  /** The focus we move in after opening isn't a user choice — don't dim the other items for it. */
+  const quietFocus = useRef(false);
   const movers = useRef<{
     top: (value: number) => void;
     bottom: (value: number) => void;
@@ -356,7 +358,7 @@ export function MenuOverlay() {
                   data-item
                   data-state="idle"
                   data-current={current || undefined}
-                  className="group/item transition-opacity duration-300 data-[state=dim]:opacity-40 data-[state=gone]:opacity-15"
+                  className="group/item transition-opacity duration-300 data-[state=gone]:opacity-15"
                 >
                   <Link
                     href={item.href}
@@ -364,13 +366,16 @@ export function MenuOverlay() {
                     aria-current={current ? "page" : undefined}
                     onClick={(e) => select(e, item.href, i)}
                     onMouseEnter={() => track(i)}
-                    onFocus={() => track(i)}
+                    onFocus={() => {
+                      if (quietFocus.current) quietFocus.current = false;
+                      else track(i);
+                    }}
                     onPointerDown={(e) => e.pointerType === "touch" && track(i)}
                     className="flex min-h-12 items-center justify-center gap-4 py-1 md:gap-12 lg:pr-[4%]"
                   >
                     <span
                       aria-hidden
-                      className="origin-center text-menu-idle transition-[color,scale] duration-300 ease-out group-data-[current]/item:text-menu-ink group-data-[state=active]/item:scale-x-[1.03] group-data-[state=active]/item:text-menu-ink md:flex-1 md:origin-right md:text-right"
+                      className="origin-center text-menu-idle transition-[color,scale] duration-300 ease-out group-data-[state=active]/item:scale-x-[1.03] group-data-[state=active]/item:text-menu-ink group-data-[state=dim]/item:text-menu-dim group-data-[current]/item:group-data-[state=idle]/item:text-menu-ink md:flex-1 md:origin-right md:text-right"
                     >
                       <span
                         data-word

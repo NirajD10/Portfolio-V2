@@ -6,6 +6,7 @@ When a spec is ambiguous, pick the simpler, more accessible option, record it he
 
 | Date | Phase | Decision | Why | Spec ref |
 |---|---|---|---|---|
+| 2026-10-20 | 2 | **Contrast pass (Niraj: titles hard to read).** `--ink-dim` raised to `#6A6585` light (5.3:1) / `#8F8AA6` dark (5.7:1), still ≥ 3.2:1 apart from `--ink` so the two-tone heading reads. Menu: non-hovered items use a `--menu-dim` colour (3.8:1 light / 4.9:1 dark) instead of 40% opacity (~1.8:1); the automatic focus after opening no longer dims the list. | Readability over subtlety; WCAG AA for large text with margin. | 02 §1.2, 06 §5 |
 | 2026-10-20 | 2 | **One curtain for menu + page transitions** (`CurtainProvider`): progress 0→1 drawn by the glitch shader (GPU tier ≥ 1, module preloaded on idle), the 16 CSS strips (tier 0 / shader not loaded yet), or a 200 ms fade (reduced motion). The menu timeline tweens the curtain's proxy; `TransitionLink` uses cover → push → wait → reveal. | 06 §3 says the menu wave doubles as the page transition; one renderer avoids two implementations drifting. | 06 §3–4 |
 | 2026-10-20 | 2 | Page push-back behind the menu is `scale` only (no `filter: brightness`), tier 2+ and ≥ 768px only. | CLAUDE.md bans animated filters on large areas. | 06 §3 |
 | 2026-10-20 | 2 | Hovered menu item widens with `scaleX(1.03)` (origin right) instead of animating `letter-spacing` 0.28 → 0.31em. | CLAUDE.md: animate transforms/opacity only. Visually equivalent at this size. | 06 §5 |
