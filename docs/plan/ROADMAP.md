@@ -59,8 +59,6 @@ P4 and P5 don't touch the same files and can be built in either order after P3.
 
 **Result (2026-10-20):** all criteria met; 26/26 Playwright tests pass (desktop 1440 + mobile 390). Home first-load JS is 245 KB gzip vs the 200 KB budget; the framework alone is 177 KB. Decision pending in `DECISIONS.md`.
 
-**Result (2026-10-20):** all criteria met; 26/26 Playwright tests (desktop 1440 + mobile 390). Home first-load JS 245 KB gzip vs 200 KB budget — framework alone is 177 KB; decision pending in `DECISIONS.md`.
-
 ## Phase 2 — Menu overlay
 - [ ] `MenuButton` morph
 - [ ] `MenuOverlay` dialog (items, indices, sub-labels, HUD, grid + guide lines)
