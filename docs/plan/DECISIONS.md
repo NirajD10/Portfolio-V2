@@ -2,16 +2,11 @@
 
 When a spec is ambiguous, pick the simpler, more accessible option, record it here, and continue. Newest first.
 
-## ⚠ Open — needs Niraj
-
-| Date | Phase | Question | Facts | Options |
-|---|---|---|---|---|
-| 2026-10-20 | 1 | **Home first-load JS budget (≤ 200 KB gzip) can't be met with this stack.** | A bare `create-next-app` (Next 16.4 + React 19.3) already ships **176.8 KB** gzip of JS on `/` (measured; same with `cacheComponents` off). Phase 1 home is **245.2 KB**: +~68 KB is GSAP core + ScrollTrigger + SplitText + ScrambleText + Lenis + next-themes + our code. Motion was already moved out of the root bundle (−45 KB). | (a) Redefine the budget as "≤ 100 KB gzip on top of the framework baseline" (now ~68 KB, so it passes). (b) Raise the absolute budget to ~260 KB. (c) Defer GSAP/Lenis until after first paint (hero text would render without its line reveal until loaded). Recommended: **(a)**. |
-
 ## Decided
 
 | Date | Phase | Decision | Why | Spec ref |
 |---|---|---|---|---|
+| 2026-10-20 | 1 | **JS budget (Niraj chose option a):** home first-load JS ≤ **100 KB gzip on top of the framework baseline**. Baseline = bare `create-next-app@16.4.2` home page, 176.8 KB, so the limit is ≤ 277 KB total. `pnpm size` checks it; re-measure the baseline when Next/React are upgraded. Phase 1: 245.2 KB (app 68.4 KB). | The old absolute 200 KB was below what Next 16 + React 19 ship on an empty page. | CLAUDE.md perf budgets, 11 §2 |
 | 2026-10-20 | 1 | **Motion is not in the root bundle.** Features using Motion wrap themselves in `<MotionScope>` (LazyMotion + MotionConfig honouring the site's reduced-motion pref). Button hover (arrow nudge, press scale) uses CSS transforms instead of Motion. | Motion's core added ~45 KB gzip to every page for one hover effect. CSS transforms can't fight GSAP (GSAP never touches buttons). Motion stays the tool for layout / AnimatePresence. | CLAUDE.md "Who animates what", perf budgets |
 | 2026-10-20 | 1 | Only ScrollTrigger, SplitText and ScrambleText are registered in `src/lib/gsap.ts`. Flip, Observer, Inertia, CustomEase, DrawSVG are imported by the feature that uses them. | Keeps them out of the first-load bundle. | 03 §1 |
 | 2026-10-20 | 1 | `SplitHeading` passes its markup as an HTML string (`dangerouslySetInnerHTML`). | SplitText rewrites the heading's children; when React also owns them, client navigation crashed with `removeChild` errors. | 02 §5 |

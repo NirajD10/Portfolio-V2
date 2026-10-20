@@ -7,7 +7,7 @@ Status: ⬜ not started · 🟨 in progress · ✅ done · ⏸ blocked (should n
 | # | Phase | Status | Plan mode | Depends on | Specs to read | Effort (evenings) |
 |---|---|---|---|---|---|---|
 | 0 | Collect assets (Niraj, no code) | 🟨 ongoing | — | — | `README` → "Things only Niraj can provide", `13` | — |
-| 1 | Foundations | ✅ (JS budget open — see DECISIONS) | optional | — | `02`, `03`, `13` (+ `01 §1` for V1 data) | 1–2 |
+| 1 | Foundations | ✅ | optional | — | `02`, `03`, `13` (+ `01 §1` for V1 data) | 1–2 |
 | 2 | Menu overlay | ⬜ | optional | 1 | `06` | 2–3 |
 | 3 | Home & page sections (no heavy FX) | ⬜ | optional | 1, 2 | `04`, `09 §2` | 3–4 |
 | 4 | The Pune ride | ⬜ | **required** | 3 | `05`, `13 §2.1`, `references/*` | 5–8 |
@@ -29,7 +29,7 @@ P4 and P5 don't touch the same files and can be built in either order after P3.
 
 ## Definition of done — every phase
 
-- [ ] `pnpm lint && pnpm typecheck && pnpm build` pass
+- [ ] `pnpm lint && pnpm typecheck && pnpm build && pnpm size` pass
 - [ ] Affected pages checked at **1440px** and **390px**, **light** and **dark**
 - [ ] Reduced-motion checked (no scroll-jacking/particles/parallax; fades ≤ 200 ms)
 - [ ] Keyboard pass with visible focus ring on everything new
@@ -57,7 +57,7 @@ P4 and P5 don't touch the same files and can be built in either order after P3.
 
 **Done when:** frame/header/footer correct in both themes at 1440/390 · theme persists with no flash · Lenis smooth and off under reduced motion · `/facts` shows real V1 data · `pnpm assets:check` prints the full list from `13` · build works without Clash files.
 
-**Result (2026-10-20):** all criteria met; 26/26 Playwright tests pass (desktop 1440 + mobile 390). Home first-load JS is 245 KB gzip vs the 200 KB budget; the framework alone is 177 KB. Decision pending in `DECISIONS.md`.
+**Result (2026-10-20):** all criteria met; 26/26 Playwright tests pass (desktop 1440 + mobile 390). Home first-load JS 245.2 KB gzip = 176.8 KB framework + 68.4 KB app, within the revised budget (≤ 100 KB app, see `DECISIONS.md`).
 
 ## Phase 2 — Menu overlay
 - [ ] `MenuButton` morph

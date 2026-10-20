@@ -40,7 +40,7 @@ Run the relevant parts at the end of every phase; run all of it in Phase 10.
 | LCP (mobile, slow 4G, Moto G-class) | ≤ 2.5 s |
 | CLS | ≤ 0.05 |
 | INP | ≤ 200 ms |
-| Home JS before WebGL | ≤ 200 KB gzip |
+| Home JS before WebGL | ≤ 100 KB gzip above the framework baseline (177 KB → ≤ 277 KB total; `pnpm size`) |
 | Three/R3F chunk | lazy, after first paint |
 | Ride SVG | ≤ 60 KB gzip, ≤ 1,500 nodes |
 | Fonts | ≤ 3 woff2 files preloaded (Clash 500, Geist 400, Geist Mono 500); others `display: swap` |

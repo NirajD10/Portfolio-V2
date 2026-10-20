@@ -64,7 +64,7 @@ Never animate the same property of the same element with two libraries.
 
 ## Performance budgets (fail the phase if exceeded)
 
-- Home first-load JS ≤ 200 KB gzip before WebGL; three/R3F loaded with `next/dynamic` after first paint
+- Home first-load JS ≤ **100 KB gzip on top of the framework baseline** (bare Next 16.4 + React 19 = 177 KB, so ≤ 277 KB total) before WebGL; check with `pnpm size`. three/R3F loaded with `next/dynamic` after first paint
 - LCP ≤ 2.5 s (mobile, slow 4G), CLS ≤ 0.05, INP ≤ 200 ms
 - Lighthouse: Performance ≥ 85 mobile / ≥ 95 desktop; Accessibility, Best Practices, SEO = 100
 - Images: AVIF/WebP via `next/image`, explicit sizes; textures ≤ 1024 px long edge
@@ -72,7 +72,7 @@ Never animate the same property of the same element with two libraries.
 ## Commands
 
 ```
-pnpm dev | pnpm build | pnpm start | pnpm lint | pnpm typecheck | pnpm test:e2e | pnpm assets:check
+pnpm dev | pnpm build | pnpm start | pnpm lint | pnpm typecheck | pnpm test:e2e | pnpm assets:check | pnpm size
 ```
 
 ## Folder map (short)
