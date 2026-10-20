@@ -4,6 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Frame } from "@/components/layout/Frame";
 import { Header } from "@/components/layout/Header";
 import { MenuOverlay } from "@/components/layout/menu/MenuOverlay";
+import { Preloader } from "@/components/layout/Preloader";
 import { MenuProvider } from "@/components/layout/menu/MenuProvider";
 import { MotionProvider } from "@/components/providers/MotionProvider";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
@@ -31,8 +32,9 @@ export const viewport: Viewport = {
 };
 
 // Runs before first paint: marks JS as available (scroll reveals start hidden) and applies the
-// visitor's saved "reduce motion" choice so nothing animates for a frame first.
-const bootScript = `(function(){var d=document.documentElement;d.classList.add("js");try{if(localStorage.getItem("nd:motion")==="reduce")d.dataset.motion="reduce"}catch(e){}})()`;
+// visitor's saved "reduce motion" choice so nothing animates for a frame first; hides the
+// preloader on repeat visits in this session.
+const bootScript = `(function(){var d=document.documentElement;d.classList.add("js");try{if(localStorage.getItem("nd:motion")==="reduce")d.dataset.motion="reduce";if(sessionStorage.getItem("nd:preloaded"))d.classList.add("preloaded")}catch(e){}})()`;
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
@@ -62,6 +64,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                   </Frame>
                 </div>
                 <MenuOverlay />
+                <Preloader />
               </MenuProvider>
             </CurtainProvider>
           </MotionProvider>

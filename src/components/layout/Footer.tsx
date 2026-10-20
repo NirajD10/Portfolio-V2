@@ -59,7 +59,7 @@ export function Footer() {
               <li key={item.href}>
                 <TransitionLink
                   href={item.href}
-                  className="group inline-flex gap-3 text-ink hover:text-accent-text"
+                  className="group inline-flex min-h-6 items-center gap-3 text-ink hover:text-accent-text"
                 >
                   <span className="pt-0.5 type-index text-accent-text">{item.index}</span>
                   {item.label}

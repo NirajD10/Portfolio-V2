@@ -4,7 +4,7 @@
  * MDX bodies (`Body`) are added in Phase 7.
  */
 
-import type { AssetId } from "../assets";
+import type { ImageAssetId } from "../assets";
 import type { ProjectSlug } from "./slugs";
 
 export type Tag = "AI" | "Web app" | "Website" | "E-commerce" | "Product";
@@ -24,9 +24,12 @@ export type Project = {
   placement: "case-study" | "archive";
   /** Shown in the Work reel (Grainy Carousel). */
   inReel: boolean;
-  cover?: AssetId;
-  hero?: AssetId;
+  cover?: ImageAssetId;
+  hero?: ImageAssetId;
   summary: string;
+  /** Case-study summary card on /work (Problem / Role / Stack / Outcome). */
+  problem: string;
+  outcome: string;
   metrics?: { label: string; value: string }[];
 };
 
@@ -46,6 +49,8 @@ export const projects: Project[] = [
     cover: "work.genai-rag-platform.cover",
     hero: "work.genai-rag-platform.hero",
     summary: "[[TBD: NDA-safe summary — problem, architecture, Niraj's role]]",
+    problem: "[[TBD: problem]]",
+    outcome: "[[TBD: outcome]]",
   },
   {
     slug: "a3dxyz-spare3d",
@@ -63,6 +68,8 @@ export const projects: Project[] = [
     hero: "work.a3dxyz-spare3d.hero",
     summary:
       "Developed and maintained (Wordpress and ReactJS) for A3DXYZ and Spare3D Website. Managed ecommerce operations for 3D printer spare parts.",
+    problem: "[[TBD: problem]]",
+    outcome: "[[TBD: outcome]]",
   },
   {
     slug: "pureplantparadise",
@@ -82,6 +89,8 @@ export const projects: Project[] = [
     hero: "work.pureplantparadise.hero",
     summary:
       "Welcome to PurePlantParadise – your premier online destination for indoor plants powered by advanced MERN Stack technology for a seamless shopping experience.",
+    problem: "[[TBD: problem]]",
+    outcome: "[[TBD: outcome]]",
   },
   {
     slug: "portfolio-v2",
@@ -97,6 +106,8 @@ export const projects: Project[] = [
     cover: "work.portfolio-v2.cover",
     hero: "work.portfolio-v2.hero",
     summary: "[[TBD: written in Phase 10 from the build itself]]",
+    problem: "[[TBD: problem]]",
+    outcome: "[[TBD: outcome]]",
   },
   {
     slug: "fitness-landing",
@@ -114,6 +125,8 @@ export const projects: Project[] = [
     inReel: true,
     cover: "work.fitness-landing.cover",
     summary: "The Fitness Landing Page is a web application designed to fitness business website.",
+    problem: "[[TBD: problem]]",
+    outcome: "[[TBD: outcome]]",
   },
   {
     slug: "weathtemp",
@@ -131,6 +144,8 @@ export const projects: Project[] = [
     inReel: true,
     cover: "work.weathtemp.cover",
     summary: "WeathTemp is weather temperature website searched based by city or location.",
+    problem: "[[TBD: problem]]",
+    outcome: "[[TBD: outcome]]",
   },
   {
     slug: "portfolio-v1",
@@ -146,6 +161,8 @@ export const projects: Project[] = [
     inReel: false,
     summary:
       "Welcome to my portfolio website! It's a showcase of my work and skills as a Full Stack Developer.",
+    problem: "[[TBD: problem]]",
+    outcome: "[[TBD: outcome]]",
   },
 ];
 

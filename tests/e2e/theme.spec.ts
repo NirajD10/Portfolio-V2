@@ -1,4 +1,4 @@
-import { expect, test } from "@playwright/test";
+import { expect, test } from "./fixtures";
 
 test("theme toggle persists across reload with no flash", async ({ page }) => {
   await page.emulateMedia({ colorScheme: "light" });

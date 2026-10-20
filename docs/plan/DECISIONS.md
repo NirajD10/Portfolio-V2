@@ -2,10 +2,26 @@
 
 When a spec is ambiguous, pick the simpler, more accessible option, record it here, and continue. Newest first.
 
+## ⚠ Open — needs Niraj
+
+| Date | Phase | Question | Facts | Options |
+|---|---|---|---|---|
+| 2026-10-20 | 3 | **Mobile Lighthouse Performance is below the ≥ 85 budget on most routes.** | Lighthouse 13.5 mobile (simulated slow 4G, 4× CPU), local prod build: `/` 71 (LCP 2.9 s, TBT 1.15 s), `/work` 67, `/contact` 78, `/about` 71, `/facts` 71–85, `/work/[slug]` 74. A bare Next 16 app scores 94 (LCP 1.8 s, TBT 0.28 s) on the same machine. Accessibility / Best Practices / SEO = 100 and CLS = 0 on every route. Already done this phase: GPU detection + three.js preload moved to "intent" (−1 s TBT), lazy SplitText for off-screen headings, first-visit content paints under the preloader. (`/facts` shows a 1.2 s first-paint delay only in Lighthouse on the bare URL — 0.15 s in a real browser and with any query string; looks like a measurement quirk.) | (a) Dedicated perf pass now, before Phase 4: subset fonts (Geist woff2 is 70 KB each vs 23 KB latin subset from `next/font/google`), load GSAP/Lenis after first paint for non-hero code, trim hydration work in providers. (b) Leave it for Phase 10's perf pass (`12` already plans one) and track the numbers each phase. Recommended: **(a) as a short "Phase 3.5"**, since the ride (Phase 4) adds more main-thread work. |
+
 ## Decided
 
 | Date | Phase | Decision | Why | Spec ref |
 |---|---|---|---|---|
+| 2026-10-20 | 3 | Home H7 (final CTA) is the footer's "Got a product in mind?" block — not duplicated on Home. | The footer already carries it on every page (04 · Footer). | 04 · H7 |
+| 2026-10-20 | 3 | No Motion on Phase 3 pages: Tracks switch, Work view toggle and the Experience panel use CSS transitions/keyframes; GSAP does scroll entrances. | Motion would add ~35 KB to every page for three small fades; the budget is ≤ 100 KB app JS. | 03 §1, CLAUDE.md budgets |
+| 2026-10-20 | 3 | Tracks (desktop): inactive tracks are `visibility: hidden` (out of tab order and the a11y tree), switched with prev/next + a polite "Track n of 3" status. Mobile stacks all three. | Simple, accessible carousel without a library. | 04 · H2 |
+| 2026-10-20 | 3 | Numbers bars are **equal height** and only real values get a bar (the `[[TBD]]` "projects shipped" is hidden). Pinned + scrubbed on ≥ 1024px only; mobile plays once on entry; reduced motion shows the end state. | The stats have different units — taller/shorter bars would imply a comparison that isn't there. | 04 · H3, 13 §2.6 |
+| 2026-10-20 | 3 | AI tiles link to each tool's site (new tab); the "use" line shows on hover/focus and always on touch screens (`hover: none`); monogram tiles until official logos are in `public/brand/`. | Tiles need to be focusable for keyboard users to reach the hover content; never redraw logos. | 09 §2, 13 §2.4 |
+| 2026-10-20 | 3 | Experience cells are disclosure buttons; details open in one panel under the grid (fade-in, no height animation). | CLAUDE.md: no animating height; one panel keeps the grid steady. | 04 · H6 |
+| 2026-10-20 | 3 | /work: each project's info column is sticky **within its own row** (instead of one global sticky index driven by ScrollTrigger), so the index always describes the screens beside it. The screens lightbox (10 §2) comes with the case-study components in Phase 7. | Same effect with no scroll JS; works the same on mobile (stacks). | 04 · Work, 10 §2 |
+| 2026-10-20 | 3 | Placeholder images render with `alt=""` until the real file arrives (the alt text describes the real screenshot, not the hatching). | Accurate alt text. | 13 |
+| 2026-10-20 | 3 | Perf: GPU detection + menu-shader preload start on MENU hover/focus/touch (or idle 8 s after load); off-screen headings split only within half a viewport; on a first visit, reveal content paints under the preloader instead of being pre-hidden. | Moved ~1 s of main-thread work out of the load window. | 03 §5, 11 §2 |
+| 2026-10-20 | 3 | Footer page links have a 24px minimum target; the About photo row is a focusable, labelled scroll region. | axe (WCAG 2.2 target-size, scrollable-region-focusable). | 11 §3 |
 | 2026-10-20 | 2 | **Contrast pass (Niraj: titles hard to read).** `--ink-dim` raised to `#6A6585` light (5.3:1) / `#8F8AA6` dark (5.7:1), still ≥ 3.2:1 apart from `--ink` so the two-tone heading reads. Menu: non-hovered items use a `--menu-dim` colour (3.8:1 light / 4.9:1 dark) instead of 40% opacity (~1.8:1); the automatic focus after opening no longer dims the list. | Readability over subtlety; WCAG AA for large text with margin. | 02 §1.2, 06 §5 |
 | 2026-10-20 | 2 | **One curtain for menu + page transitions** (`CurtainProvider`): progress 0→1 drawn by the glitch shader (GPU tier ≥ 1, module preloaded on idle), the 16 CSS strips (tier 0 / shader not loaded yet), or a 200 ms fade (reduced motion). The menu timeline tweens the curtain's proxy; `TransitionLink` uses cover → push → wait → reveal. | 06 §3 says the menu wave doubles as the page transition; one renderer avoids two implementations drifting. | 06 §3–4 |
 | 2026-10-20 | 2 | Page push-back behind the menu is `scale` only (no `filter: brightness`), tier 2+ and ≥ 768px only. | CLAUDE.md bans animated filters on large areas. | 06 §3 |

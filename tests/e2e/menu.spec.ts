@@ -1,4 +1,4 @@
-import { expect, test, type Page } from "@playwright/test";
+import { expect, test, type Page } from "./fixtures";
 
 const trigger = (page: Page) => page.locator("header [aria-controls='site-menu']");
 const dialog = (page: Page) => page.getByRole("dialog", { name: "Site menu" });

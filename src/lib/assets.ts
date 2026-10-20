@@ -1,4 +1,4 @@
-import type { AssetId, BrandSlug } from "@/content/assets";
+import type { AssetId, BrandSlug, ImageAssetId } from "@/content/assets";
 import generated from "@/content/assets.generated.json";
 
 export type ResolvedImage = {
@@ -18,15 +18,13 @@ export type ResolvedFile = {
 };
 export type ResolvedAsset = ResolvedImage | ResolvedLogo | ResolvedFile;
 
-type ImageId = Extract<AssetId, `work.${string}` | `life.${string}`>;
-
 const table = generated as Record<string, ResolvedAsset>;
 
 /**
  * Resolve an asset slot (docs/plan/13). Returns the final file when it exists, otherwise the placeholder.
  * Never hard-code asset paths in components.
  */
-export function asset(id: ImageId): ResolvedImage;
+export function asset(id: ImageAssetId): ResolvedImage;
 export function asset(id: `brand.${BrandSlug}`): ResolvedLogo;
 export function asset(id: AssetId): ResolvedAsset;
 export function asset(id: AssetId): ResolvedAsset {

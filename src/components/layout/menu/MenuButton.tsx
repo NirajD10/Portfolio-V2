@@ -5,6 +5,7 @@ import { useReducedMotionPref } from "@/components/providers/MotionProvider";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { cn } from "@/lib/cn";
 import { ease } from "@/lib/motion";
+import { warmUpGpu } from "@/components/webgl/useGpuTier";
 import { useMenu } from "./MenuProvider";
 
 const MORPH = 0.45;
@@ -50,6 +51,10 @@ export function MenuButton({ className }: { className?: string }) {
       aria-controls="site-menu"
       aria-label={isOpen ? "Close menu" : "Open menu"}
       onClick={() => setOpen(!isOpen)}
+      // Intent to open: start GPU detection + shader preload now, not during first paint.
+      onPointerEnter={() => warmUpGpu()}
+      onFocus={() => warmUpGpu()}
+      onTouchStart={() => warmUpGpu()}
       className={cn("group inline-flex h-10 items-center text-ink", className)}
     >
       <span ref={scope} aria-hidden className="inline-flex items-center gap-3">

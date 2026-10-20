@@ -73,6 +73,9 @@ export type AssetId =
   | "file.resume"
   | "font.clash";
 
+/** Image slots only (what next/image can render). */
+export type ImageAssetId = Extract<AssetId, `work.${string}` | `life.${string}`>;
+
 const upper = (s: string) => s.replace(/-/g, " ").toUpperCase();
 
 function cover(slug: string): AssetSlot {

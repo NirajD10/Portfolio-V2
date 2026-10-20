@@ -9,7 +9,7 @@ Status: ⬜ not started · 🟨 in progress · ✅ done · ⏸ blocked (should n
 | 0 | Collect assets (Niraj, no code) | 🟨 ongoing | — | — | `README` → "Things only Niraj can provide", `13` | — |
 | 1 | Foundations | ✅ | optional | — | `02`, `03`, `13` (+ `01 §1` for V1 data) | 1–2 |
 | 2 | Menu overlay | ✅ | optional | 1 | `06` | 2–3 |
-| 3 | Home & page sections (no heavy FX) | ⬜ | optional | 1, 2 | `04`, `09 §2` | 3–4 |
+| 3 | Home & page sections (no heavy FX) | ✅ (mobile perf open) | optional | 1, 2 | `04`, `09 §2` | 3–4 |
 | 4 | The Pune ride | ⬜ | **required** | 3 | `05`, `13 §2.1`, `references/*` | 5–8 |
 | 5 | WebGL Stage + Light Cove | ⬜ | **required** | 3 | `03 §5`, `07` | 2–3 |
 | 6 | Grainy Carousel | ⬜ | **required** | 5 | `08` | 3–4 |
@@ -74,13 +74,15 @@ P4 and P5 don't touch the same files and can be built in either order after P3.
 **Result (2026-10-20):** all `06 §8` items pass; 42/42 Playwright tests (incl. 16 menu tests, desktop + mobile, reduced motion). Glitch canvas mounts only during a curtain run and is gone after close. Home first-load JS 255.3 KB (app 78.5 KB ≤ 100). Light Cove behind the menu → Phase 5.
 
 ## Phase 3 — Home & page sections
-- [ ] Home: Hero (ride slot), Tracks, Numbers (pinned, count-up bars), AI tools tiles, Work reel (plain DOM row), Experience grid + drawer, Final CTA
-- [ ] About (no illustration/carousel yet), Contact (no scene), Work index (toggle, NDA block, archive), `/facts`, 404 copy
-- [ ] Preloader (rev counter, first visit per session)
-- [ ] Scroll entrances from `02 §5`
-- [ ] Marked slots for ride strip, Grainy Carousel, Light Cove, illustrations
+- [x] Home: Hero (ride slot), Tracks, Numbers (pinned, count-up bars), AI tools tiles, Work reel (plain DOM row), Experience grid + drawer, Final CTA
+- [x] About (no illustration/carousel yet), Contact (no scene), Work index (toggle, NDA block, archive), `/facts`, 404 copy
+- [x] Preloader (rev counter, first visit per session)
+- [x] Scroll entrances from `02 §5`
+- [x] Marked slots for ride strip, Grainy Carousel, Light Cove, illustrations
 
 **Done when:** every page complete, responsive, accessible without WebGL · Lighthouse a11y 100 on all routes · no font-load layout shift.
+
+**Result (2026-10-20):** Lighthouse Accessibility / Best Practices / SEO 100 and CLS 0 on all routes; axe clean on every route in both themes, desktop + mobile; 85/85 Playwright tests. Home first-load JS 267.1 KB (app 90.3 KB ≤ 100). Mobile Performance 67–85 (budget ≥ 85) — open item in `DECISIONS.md`.
 
 ## Phase 4 — The Pune ride *(plan mode; steps 1–5 first)*
 - [ ] 1 · Static layered SVG with `05 §4` ids: landmark placeholders, bike draft, rider (helmet + `rider.config.ts` outfit), `OfficeFacade`

@@ -2,8 +2,9 @@
 
 import { useRef, type ElementType } from "react";
 import { useReducedMotionPref } from "@/components/providers/MotionProvider";
-import { gsap, SplitText, useGSAP } from "@/lib/gsap";
+import { gsap, ScrollTrigger, SplitText, useGSAP } from "@/lib/gsap";
 import { cn } from "@/lib/cn";
+import { whenIntroDone } from "@/lib/intro";
 import { dur, ease, reducedFade, revealStart, stagger } from "@/lib/motion";
 
 type SplitHeadingProps = {
@@ -15,7 +16,7 @@ type SplitHeadingProps = {
   /** Put the dim phrase on its own line. */
   breakLine?: boolean;
   size?: "xl" | "lg" | "md";
-  /** Play on mount instead of on scroll (hero). */
+  /** Play on mount (after the preloader) instead of on scroll — for above-the-fold headings. */
   immediate?: boolean;
   className?: string;
   id?: string;
@@ -45,29 +46,59 @@ export function SplitHeading({
   const { reduced } = useReducedMotionPref();
 
   useGSAP(
-    () => {
+    (_, contextSafe) => {
       const el = ref.current!;
       const trigger = immediate ? undefined : { trigger: el, start: revealStart, once: true };
       el.setAttribute("data-revealed", "");
 
+      // Above-the-fold headings wait for the preloader to hand over the page.
+      const start = (tween: gsap.core.Animation) => {
+        if (!immediate) return tween;
+        tween.pause();
+        whenIntroDone().then(() => tween.play());
+        return tween;
+      };
+
       if (reduced) {
-        gsap.from(el, { opacity: 0, duration: reducedFade, scrollTrigger: trigger });
+        start(gsap.from(el, { opacity: 0, duration: reducedFade, scrollTrigger: trigger }));
         return;
       }
 
-      SplitText.create(el, {
-        type: "lines",
-        mask: "lines",
-        autoSplit: true,
-        onSplit(self) {
-          return gsap.from(self.lines, {
-            yPercent: 100,
-            duration: dur.base,
-            ease: ease.out,
-            stagger: stagger.lines,
-            scrollTrigger: trigger,
-          });
-        },
+      const split = () =>
+        SplitText.create(el, {
+          type: "lines",
+          mask: "lines",
+          autoSplit: true,
+          onSplit(self) {
+            return start(
+              gsap.from(self.lines, {
+                yPercent: 100,
+                duration: dur.base,
+                ease: ease.out,
+                stagger: stagger.lines,
+                scrollTrigger: trigger,
+              }),
+            );
+          },
+        });
+
+      if (immediate) {
+        split();
+        return;
+      }
+
+      // Off-screen headings: splitting forces layout, so do it only when the heading is within
+      // half a viewport of the screen. Until then it stays hidden (cheap autoAlpha).
+      gsap.set(el, { autoAlpha: 0 });
+      ScrollTrigger.create({
+        trigger: el,
+        start: "top bottom+=50%",
+        end: "max",
+        once: true,
+        onEnter: contextSafe!(() => {
+          gsap.set(el, { autoAlpha: 1 });
+          split();
+        }),
       });
     },
     { scope: ref, dependencies: [reduced], revertOnUpdate: true },

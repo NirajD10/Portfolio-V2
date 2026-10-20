@@ -42,6 +42,11 @@ const eslintConfig = defineConfig([
       ],
     },
   },
+  {
+    // Playwright fixtures call `use()` — not React's hook.
+    files: ["tests/**/*.ts"],
+    rules: { "react-hooks/rules-of-hooks": "off" },
+  },
   globalIgnores([
     ".next/**",
     "out/**",

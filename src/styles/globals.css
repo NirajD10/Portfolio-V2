@@ -157,10 +157,12 @@ html.lenis body {
 }
 
 /*
- * Scroll-reveal elements start hidden once JS is known to run (html.js is set by an inline script),
- * so server HTML doesn't flash before GSAP takes over. If hydration never happens they fade in after 3s.
+ * Scroll-reveal elements start hidden before hydration so server HTML doesn't flash before GSAP
+ * takes over — but only on repeat visits (html.preloaded). On a first visit the preloader covers the
+ * page, so content paints underneath right away (good for LCP) and GSAP hides it before the reveal.
+ * If hydration never happens they fade in after 3s.
  */
-.js [data-reveal]:not([data-revealed]) {
+.js.preloaded [data-reveal]:not([data-revealed]) {
   opacity: 0;
   animation: reveal-fallback 0.15s 3s forwards;
 }
@@ -179,5 +181,27 @@ html.lenis body {
   50% {
     opacity: 0.45;
     transform: scale(0.75);
+  }
+}
+
+/* Preloader: first visit per session only, and only when JS runs. Safety net: gone after 4 s. */
+html.preloaded .preloader,
+html:not(.js) .preloader {
+  display: none;
+}
+.preloader {
+  animation: preloader-safety 0.2s 4s forwards;
+}
+@keyframes preloader-safety {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
   }
 }

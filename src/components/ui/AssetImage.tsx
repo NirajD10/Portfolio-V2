@@ -1,11 +1,11 @@
 import Image from "next/image";
-import type { AssetId } from "@/content/assets";
+import type { ImageAssetId } from "@/content/assets";
 import { asset } from "@/lib/assets";
 import { cn } from "@/lib/cn";
 import { PlaceholderTag } from "./PlaceholderTag";
 
 type AssetImageProps = {
-  id: Extract<AssetId, `work.${string}` | `life.${string}`>;
+  id: ImageAssetId;
   alt: string;
   sizes: string;
   priority?: boolean;
@@ -22,7 +22,8 @@ export function AssetImage({ id, alt, sizes, priority, className, imgClassName }
         src={img.src}
         width={img.width}
         height={img.height}
-        alt={alt}
+        // A placeholder isn't the picture the alt text describes, so it's decorative until replaced.
+        alt={img.placeholder ? "" : alt}
         sizes={sizes}
         priority={priority}
         className={cn("h-auto w-full", imgClassName)}
