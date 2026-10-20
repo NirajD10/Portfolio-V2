@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useRef } from "react";
 import { useReducedMotionPref } from "@/components/providers/MotionProvider";
 import { site } from "@/content/site";
@@ -8,8 +7,9 @@ import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
 import { dur, ease } from "@/lib/motion";
 import { AvailabilityBadge } from "./AvailabilityBadge";
 import { LocalTime } from "./LocalTime";
-import { MenuButton } from "./MenuButton";
+import { MenuButton } from "./menu/MenuButton";
 import { ThemeToggle } from "./ThemeToggle";
+import { TransitionLink } from "@/components/transition/TransitionLink";
 
 /**
  * Fixed 72px header (04 · Global chrome). Transparent at the top; once scrolled it gets the page
@@ -45,14 +45,14 @@ export function Header() {
       className="group/header fixed inset-x-0 top-0 z-20 frame-col h-header border-b border-transparent transition-colors duration-300 data-scrolled:border-line data-scrolled:bg-bg/85 data-scrolled:backdrop-blur-sm"
     >
       <div className="flex h-full items-center justify-between gap-6 px-frame-pad">
-        <Link
+        <TransitionLink
           href="/"
           aria-label={`${site.name} — home`}
           className="font-display text-2xl font-semibold tracking-tight text-ink"
         >
           {site.wordmark}
           <span className="text-accent">.</span>
-        </Link>
+        </TransitionLink>
 
         <div className="hidden items-center gap-5 lg:flex">
           <LocalTime />

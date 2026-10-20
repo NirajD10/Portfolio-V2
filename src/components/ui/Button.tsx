@@ -1,6 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
-import Link from "next/link";
 import type { ReactNode } from "react";
+import { TransitionLink } from "@/components/transition/TransitionLink";
 import { cn } from "@/lib/cn";
 
 type Common = {
@@ -52,9 +52,9 @@ export function Button(props: ButtonProps) {
       );
     }
     return (
-      <Link href={props.href} className={classes}>
+      <TransitionLink href={props.href} className={classes}>
         {content}
-      </Link>
+      </TransitionLink>
     );
   }
   return (

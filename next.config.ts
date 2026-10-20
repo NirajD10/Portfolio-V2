@@ -11,6 +11,10 @@ const nextConfig: NextConfig = {
         loaders: ["@tailwindcss/turbopack"],
         as: "*.css",
       },
+      // Shaders live in .glsl files and are imported as strings (CLAUDE.md · WebGL rules).
+      "*.{glsl,vert,frag}": {
+        type: "raw",
+      },
     },
   },
   images: {

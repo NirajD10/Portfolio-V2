@@ -22,7 +22,9 @@ const ROUTES: Record<string, string> = {
 const limit = FRAMEWORK_BASELINE_KB + APP_BUDGET_KB;
 let failed = false;
 
-console.log(`\nFirst-load JS (gzip) · budget ${limit.toFixed(0)} KB = ${FRAMEWORK_BASELINE_KB} framework + ${APP_BUDGET_KB} app\n`);
+console.log(
+  `\nFirst-load JS (gzip) · budget ${limit.toFixed(0)} KB = ${FRAMEWORK_BASELINE_KB} framework + ${APP_BUDGET_KB} app\n`,
+);
 for (const [route, file] of Object.entries(ROUTES)) {
   const htmlPath = abs(`.next/server/app/${file}.html`);
   if (!existsSync(htmlPath)) {
@@ -35,7 +37,9 @@ for (const [route, file] of Object.entries(ROUTES)) {
   const app = kb - FRAMEWORK_BASELINE_KB;
   const over = kb > limit;
   if (route === "/" && over) failed = true;
-  console.log(`  ${route.padEnd(10)} ${kb.toFixed(1).padStart(6)} KB  (app ${app.toFixed(1)} KB)${over ? "  ✗ over budget" : ""}`);
+  console.log(
+    `  ${route.padEnd(10)} ${kb.toFixed(1).padStart(6)} KB  (app ${app.toFixed(1)} KB)${over ? "  ✗ over budget" : ""}`,
+  );
 }
 console.log("");
 if (failed) process.exit(1);

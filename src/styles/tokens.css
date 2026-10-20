@@ -79,8 +79,9 @@
   --spacing-header: var(--header-h);
 }
 
-/* Brand palette (02 §1.1) + supporting colours (illustration / shaders only, never UI text) */
-@theme {
+/* Brand palette (02 §1.1) + supporting colours (illustration / shaders only, never UI text).
+   `static` keeps every variable on :root so WebGL code can read colours with getComputedStyle. */
+@theme static {
   --color-purple-50: #f3eeff;
   --color-purple-100: #e6dcff;
   --color-purple-200: #cdb8ff;
@@ -100,6 +101,12 @@
   --color-paper-0: #ffffff;
   --color-paper-100: #f1eef8;
   --color-menu-950: #0b0912;
+  /* Menu overlay (06 §1) — the overlay is dark in both themes */
+  --color-menu-ink: #f9fafc;
+  --color-menu-idle: #9a96b0;
+  --color-menu-muted: #a9a6b8;
+  --color-menu-line: rgb(249 250 252 / 0.12);
+  --color-menu-residual: #241a4a;
   --color-blue-400: #5b8cff;
   --color-magenta-400: #c86bfa;
   --color-amber-300: #f2b76b;

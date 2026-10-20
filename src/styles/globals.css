@@ -128,11 +128,20 @@ html.lenis body {
   overflow: clip;
 }
 
+/*
+ * Reduced motion (OS setting or the site toggle): loops play once and CSS transitions are capped at
+ * 150 ms. Only elements that declare a transition are touched — a blanket `*` rule would make every
+ * property (even visibility) transition, because transition-property defaults to `all`.
+ */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
     animation-iteration-count: 1 !important;
+  }
+  [class*="transition"],
+  [class*="transition"]::before,
+  [class*="transition"]::after {
     transition-duration: 0.15s !important;
   }
 }
@@ -140,6 +149,10 @@ html.lenis body {
 [data-motion="reduce"] *::before,
 [data-motion="reduce"] *::after {
   animation-iteration-count: 1 !important;
+}
+[data-motion="reduce"] [class*="transition"],
+[data-motion="reduce"] [class*="transition"]::before,
+[data-motion="reduce"] [class*="transition"]::after {
   transition-duration: 0.15s !important;
 }
 

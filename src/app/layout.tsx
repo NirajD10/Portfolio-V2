@@ -3,8 +3,11 @@ import type { ReactNode } from "react";
 import { Footer } from "@/components/layout/Footer";
 import { Frame } from "@/components/layout/Frame";
 import { Header } from "@/components/layout/Header";
+import { MenuOverlay } from "@/components/layout/menu/MenuOverlay";
+import { MenuProvider } from "@/components/layout/menu/MenuProvider";
 import { MotionProvider } from "@/components/providers/MotionProvider";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import { CurtainProvider } from "@/components/transition/CurtainProvider";
 import { site } from "@/content/site";
 import { fontVariables } from "@/lib/fonts";
 import "@/styles/globals.css";
@@ -40,19 +43,27 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body className="antialiased">
         <ThemeProvider>
           <MotionProvider>
-            <a
-              href="#main"
-              className="fixed top-3 left-3 z-50 -translate-y-20 bg-accent px-3 py-2 type-label text-accent-ink focus:translate-y-0"
-            >
-              Skip to content
-            </a>
-            <Header />
-            <Frame>
-              <main id="main" tabIndex={-1} className="flex-1 pt-header outline-none">
-                {children}
-              </main>
-              <Footer />
-            </Frame>
+            <CurtainProvider>
+              <MenuProvider>
+                {/* Everything behind the menu: made inert while the menu is open */}
+                <div id="site-root">
+                  <a
+                    href="#main"
+                    className="fixed top-3 left-3 z-50 -translate-y-20 bg-accent px-3 py-2 type-label text-accent-ink focus:translate-y-0"
+                  >
+                    Skip to content
+                  </a>
+                  <Header />
+                  <Frame>
+                    <main id="main" tabIndex={-1} className="flex-1 pt-header outline-none">
+                      {children}
+                    </main>
+                    <Footer />
+                  </Frame>
+                </div>
+                <MenuOverlay />
+              </MenuProvider>
+            </CurtainProvider>
           </MotionProvider>
         </ThemeProvider>
       </body>

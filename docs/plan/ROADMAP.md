@@ -8,7 +8,7 @@ Status: ⬜ not started · 🟨 in progress · ✅ done · ⏸ blocked (should n
 |---|---|---|---|---|---|---|
 | 0 | Collect assets (Niraj, no code) | 🟨 ongoing | — | — | `README` → "Things only Niraj can provide", `13` | — |
 | 1 | Foundations | ✅ | optional | — | `02`, `03`, `13` (+ `01 §1` for V1 data) | 1–2 |
-| 2 | Menu overlay | ⬜ | optional | 1 | `06` | 2–3 |
+| 2 | Menu overlay | ✅ | optional | 1 | `06` | 2–3 |
 | 3 | Home & page sections (no heavy FX) | ⬜ | optional | 1, 2 | `04`, `09 §2` | 3–4 |
 | 4 | The Pune ride | ⬜ | **required** | 3 | `05`, `13 §2.1`, `references/*` | 5–8 |
 | 5 | WebGL Stage + Light Cove | ⬜ | **required** | 3 | `03 §5`, `07` | 2–3 |
@@ -60,16 +60,18 @@ P4 and P5 don't touch the same files and can be built in either order after P3.
 **Result (2026-10-20):** all criteria met; 26/26 Playwright tests pass (desktop 1440 + mobile 390). Home first-load JS 245.2 KB gzip = 176.8 KB framework + 68.4 KB app, within the revised budget (≤ 100 KB app, see `DECISIONS.md`).
 
 ## Phase 2 — Menu overlay
-- [ ] `MenuButton` morph
-- [ ] `MenuOverlay` dialog (items, indices, sub-labels, HUD, grid + guide lines)
-- [ ] GSAP open/close timeline, ScrambleText, RGB split; hover/focus guide-line tracking
-- [ ] A11y: focus trap, Esc/outside close, `inert` background, focus returns to trigger
-- [ ] Navigation: same-page scroll vs route change
-- [ ] CSS 16-strip wave fallback → then `MenuGlitch` shader canvas (tier ≥ 1, mounted only while open)
-- [ ] `TransitionLink` page transitions with the same wave
-- [ ] Playwright `menu.spec.ts`
+- [x] `MenuButton` morph
+- [x] `MenuOverlay` dialog (items, indices, sub-labels, HUD, grid + guide lines)
+- [x] GSAP open/close timeline, ScrambleText, RGB split; hover/focus guide-line tracking
+- [x] A11y: focus trap, Esc/outside close, `inert` background, focus returns to trigger
+- [x] Navigation: same-page scroll vs route change
+- [x] CSS 16-strip wave fallback → then `MenuGlitch` shader canvas (tier ≥ 1, mounted only while open)
+- [x] `TransitionLink` page transitions with the same wave
+- [x] Playwright `menu.spec.ts`
 
 **Done when:** `06 §8` passes; `menu.spec.ts` green.
+
+**Result (2026-10-20):** all `06 §8` items pass; 42/42 Playwright tests (incl. 16 menu tests, desktop + mobile, reduced motion). Glitch canvas mounts only during a curtain run and is gone after close. Home first-load JS 255.3 KB (app 78.5 KB ≤ 100). Light Cove behind the menu → Phase 5.
 
 ## Phase 3 — Home & page sections
 - [ ] Home: Hero (ride slot), Tracks, Numbers (pinned, count-up bars), AI tools tiles, Work reel (plain DOM row), Experience grid + drawer, Final CTA

@@ -89,8 +89,10 @@ export function MotionProvider({ children }: { children: ReactNode }) {
     return () => stopLenis();
   }, [reduced]);
 
-  // Refresh ScrollTrigger once fonts and images have settled.
+  // Refresh ScrollTrigger once fonts and images have settled. `data-ready` marks hydration
+  // (used by e2e tests before interacting).
   useEffect(() => {
+    document.documentElement.dataset.ready = "true";
     const refresh = () => ScrollTrigger.refresh();
     document.fonts?.ready.then(refresh);
     window.addEventListener("load", refresh);

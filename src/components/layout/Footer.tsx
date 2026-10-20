@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { CopyEmail } from "@/components/ui/CopyEmail";
 import { Button } from "@/components/ui/Button";
 import { SplitHeading } from "@/components/ui/SplitHeading";
@@ -7,6 +6,7 @@ import { nav, site } from "@/content/site";
 import { resumeHref } from "@/lib/assets";
 import { isPreview } from "@/lib/env";
 import { isTbd, t } from "@/lib/tbd";
+import { TransitionLink } from "@/components/transition/TransitionLink";
 import { MotionToggle } from "./MotionToggle";
 
 const online = [
@@ -54,13 +54,16 @@ export function Footer() {
           <h2 id="footer-pages" className="mb-4 type-label text-ink-muted">
             Pages
           </h2>
-          <ul id="site-pages" tabIndex={-1} className="space-y-2 text-small outline-none">
+          <ul className="space-y-2 text-small">
             {nav.map((item) => (
               <li key={item.href}>
-                <Link href={item.href} className="group inline-flex gap-3 text-ink hover:text-accent-text">
+                <TransitionLink
+                  href={item.href}
+                  className="group inline-flex gap-3 text-ink hover:text-accent-text"
+                >
                   <span className="pt-0.5 type-index text-accent-text">{item.index}</span>
                   {item.label}
-                </Link>
+                </TransitionLink>
               </li>
             ))}
           </ul>
@@ -93,9 +96,9 @@ export function Footer() {
             © {site.copyrightYear} {site.name}
           </li>
           <li>
-            <Link href="/facts" className="hover:text-ink">
+            <TransitionLink href="/facts" className="hover:text-ink">
               Facts
-            </Link>
+            </TransitionLink>
           </li>
           <li>
             {isTbd(site.v1.url) ? (

@@ -5,9 +5,10 @@
  * 3. Makes the 1024px WebGL texture for final images that need one.
  * 4. Points src/lib/clash.generated.ts at Clash Grotesk, or at the Geist fallback when the file is missing.
  * 5. Writes src/content/assets.generated.json.
+ * 6. Copies detect-gpu's benchmark tables to public/gpu-benchmarks (self-hosted, no CDN request).
  * AVIF/WebP delivery is left to next/image (images.formats) — see DECISIONS.md.
  */
-import { existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
+import { cpSync, existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import sharp from "sharp";
 import { assetSlots, placeholderPath, placeholderTexturePath } from "../src/content/assets";
@@ -108,6 +109,11 @@ export async function syncAssets() {
     "src/content/assets.generated.json",
     JSON.stringify(out, null, 2) + "\n",
   );
+  const benchmarks = abs("node_modules/detect-gpu/dist/benchmarks");
+  if (existsSync(benchmarks) && !existsSync(abs("public/gpu-benchmarks"))) {
+    cpSync(benchmarks, abs("public/gpu-benchmarks"), { recursive: true });
+  }
+
   const pending = Object.values(out).filter((a) => a.placeholder).length;
 
   console.log(
