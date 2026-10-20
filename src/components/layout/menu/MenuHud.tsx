@@ -62,7 +62,7 @@ export function MenuHudBottom() {
         <span data-hud className="flex items-center gap-6">
           <button
             type="button"
-            onClick={() => toggle()}
+            onClick={(e) => toggle(e.currentTarget)}
             className="type-label text-menu-muted transition-colors hover:text-menu-ink"
           >
             <span aria-hidden>◐</span> Theme <span className="text-accent-text">{mounted ? theme : ""}</span>

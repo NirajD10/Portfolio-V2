@@ -242,7 +242,7 @@ export function MenuOverlay() {
         .fromTo(word, { "--split": "4px" }, { "--split": "0px", duration: 1 / 60, ease: "steps(1)" })
         .to(
           word,
-          { color: "var(--color-purple-300)", duration: 0.09, yoyo: true, repeat: 1, clearProps: "color" },
+          { color: "var(--color-accent-text)", duration: 0.09, yoyo: true, repeat: 1, clearProps: "color" },
           0,
         );
     }
@@ -330,7 +330,6 @@ export function MenuOverlay() {
       aria-modal="true"
       aria-label="Site menu"
       tabIndex={-1}
-      data-theme="dark"
       onKeyDown={onKeyDown}
       onClick={onClick}
       className="invisible fixed inset-0 z-50 text-menu-ink outline-none"
@@ -382,7 +381,7 @@ export function MenuOverlay() {
                       </span>
                     </span>
                     <span aria-hidden className="relative w-12 shrink-0 md:w-48">
-                      <span data-index className="flex items-center gap-1.5 type-index text-purple-300">
+                      <span data-index className="flex items-center gap-1.5 type-index text-accent-text">
                         <span className="-translate-x-2 opacity-0 transition-[translate,opacity] duration-300 group-data-[state=active]/item:translate-x-0 group-data-[state=active]/item:opacity-100">
                           →
                         </span>

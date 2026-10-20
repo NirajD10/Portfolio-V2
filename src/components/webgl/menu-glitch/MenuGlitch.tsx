@@ -1,15 +1,8 @@
 "use client";
 
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { useMemo, useRef, type RefObject } from "react";
-import {
-  AdditiveBlending,
-  BufferAttribute,
-  BufferGeometry,
-  Color,
-  LinearSRGBColorSpace,
-  ShaderMaterial,
-} from "three";
+import { useEffect, useMemo, useRef, type RefObject } from "react";
+import { BufferAttribute, BufferGeometry, Color, LinearSRGBColorSpace, ShaderMaterial } from "three";
 import type { GpuTier } from "@/lib/gpu";
 import hash from "../glsl/hash.glsl";
 import glitchFrag from "./shaders/glitch.frag";
@@ -24,10 +17,34 @@ import particlesVert from "./shaders/particles.vert";
 
 type Props = { progressRef: RefObject<number>; tier: GpuTier };
 
-/** Read a colour token from CSS (tokens.css, @theme static) without colour-space conversion. */
+/** Read a colour token from CSS (tokens.css) without colour-space conversion. */
 function token(name: string) {
   const value = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
   return new Color().setStyle(value, LinearSRGBColorSpace);
+}
+
+/** The menu palette for the current theme (light and dark variants live in tokens.css). */
+function readPalette() {
+  return {
+    hot: [1, 2, 3, 4, 5].map((n) => token(`--menu-hot-${n}`)),
+    base: token("--menu-bg"),
+    residual: token("--menu-residual"),
+    particle: token("--menu-particle"),
+  };
+}
+
+/** Calls `apply` with the palette now and again whenever the theme attribute changes. */
+function useThemePalette(apply: (palette: ReturnType<typeof readPalette>) => void) {
+  const applyRef = useRef(apply);
+  useEffect(() => {
+    applyRef.current = apply;
+  });
+  useEffect(() => {
+    applyRef.current(readPalette());
+    const observer = new MutationObserver(() => applyRef.current(readPalette()));
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+    return () => observer.disconnect();
+  }, []);
 }
 
 /** Deterministic PRNG (mulberry32) so particle layout is pure and stable between renders. */
@@ -49,28 +66,28 @@ function Blocks({ progressRef, tier }: Props) {
       vertexShader: vert,
       fragmentShader: `${hash}\n${glitchFrag}`,
       transparent: true,
+      premultipliedAlpha: true,
       depthTest: false,
       depthWrite: false,
       uniforms: {
         uProgress: { value: 0 },
         uTime: { value: 0 },
         uRows: { value: rows },
-        uHot: {
-          value: [
-            token("--color-purple-500"),
-            token("--color-purple-300"),
-            token("--color-magenta-400"),
-            token("--color-blue-400"),
-            token("--color-purple-50"),
-          ],
-        },
-        uBase: { value: token("--color-menu-950") },
-        uResidual: { value: token("--color-menu-residual") },
+        uHot: { value: [new Color(), new Color(), new Color(), new Color(), new Color()] },
+        uBase: { value: new Color() },
+        uResidual: { value: new Color() },
       },
     });
   }, [size.width, size.height, tier]);
 
   const mat = useRef<ShaderMaterial>(null);
+  useThemePalette((palette) => {
+    const u = mat.current?.uniforms;
+    if (!u) return;
+    u.uHot.value = palette.hot;
+    u.uBase.value = palette.base;
+    u.uResidual.value = palette.residual;
+  });
   useFrame((_, delta) => {
     const u = mat.current!.uniforms;
     u.uProgress.value = progressRef.current;
@@ -109,18 +126,21 @@ function Particles({ progressRef, count }: { progressRef: RefObject<number>; cou
         transparent: true,
         depthTest: false,
         depthWrite: false,
-        blending: AdditiveBlending,
+        premultipliedAlpha: true,
         uniforms: {
           uTime: { value: 0 },
           uProgress: { value: 0 },
           uPixelRatio: { value: dpr },
-          uColor: { value: token("--color-purple-200") },
+          uColor: { value: new Color() },
         },
       }),
     [dpr],
   );
 
   const mat = useRef<ShaderMaterial>(null);
+  useThemePalette((palette) => {
+    if (mat.current) mat.current.uniforms.uColor.value = palette.particle;
+  });
   useFrame((_, delta) => {
     const u = mat.current!.uniforms;
     u.uProgress.value = progressRef.current;

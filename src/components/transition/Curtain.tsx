@@ -10,8 +10,8 @@ import type { CurtainMode } from "./CurtainProvider";
 const MenuGlitch = dynamic(() => import("@/components/webgl/menu-glitch/MenuGlitch"), { ssr: false });
 
 const STRIPS = 16;
-// Hot colours for the CSS fallback (06 §4): purple-500, purple-300, magenta-400, blue-400, purple-50.
-const HOT = ["bg-purple-500", "bg-purple-300", "bg-magenta-400", "bg-blue-400", "bg-purple-50"] as const;
+// Hot colours for the CSS fallback (06 §4) — theme-aware tokens, same set as the shader.
+const HOT = ["bg-menu-hot-1", "bg-menu-hot-2", "bg-menu-hot-3", "bg-menu-hot-4", "bg-menu-hot-5"] as const;
 
 type CurtainProps = {
   mode: CurtainMode | null;
@@ -62,10 +62,10 @@ export function Curtain({ mode, tier, progressRef, rendererRef, onShaderError }:
 
   return (
     <div ref={root} aria-hidden className="pointer-events-none invisible fixed inset-0 z-40">
-      <div data-fade className="absolute inset-0 bg-menu-950 opacity-0" />
+      <div data-fade className="absolute inset-0 bg-menu-bg opacity-0" />
       <div className="absolute inset-0 flex flex-col">
         {Array.from({ length: STRIPS }, (_, i) => (
-          <div key={i} data-strip className="relative flex-1 origin-right scale-x-0 bg-menu-950">
+          <div key={i} data-strip className="relative flex-1 origin-right scale-x-0 bg-menu-bg">
             <div data-strip-hot className={`absolute inset-0 ${HOT[(i * 7) % HOT.length]}`} />
           </div>
         ))}

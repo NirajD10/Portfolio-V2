@@ -20,6 +20,19 @@
   --accent-soft: #f3eeff;
   --focus: #5b37a6;
   --texture: rgba(113, 73, 198, 0.06);
+  /* Menu overlay + curtain (06 §1, light variant) — contrast on --menu-bg: ink 16.5, idle 5.1, muted 6.5 */
+  --menu-bg: #f1eef8;
+  --menu-ink: #111111;
+  --menu-idle: #66627e;
+  --menu-muted: #55526a;
+  --menu-line: rgb(17 17 17 / 0.12);
+  --menu-residual: #e6dcff;
+  --menu-hot-1: #7149c6;
+  --menu-hot-2: #cdb8ff;
+  --menu-hot-3: #c86bfa;
+  --menu-hot-4: #5b8cff;
+  --menu-hot-5: #462a82;
+  --menu-particle: #7149c6;
   color-scheme: light;
 }
 
@@ -39,6 +52,19 @@
   --accent-soft: #321e5e;
   --focus: #ad86ff;
   --texture: rgba(173, 134, 255, 0.05);
+  /* Menu overlay + curtain (06 §1) — contrast on --menu-bg: ink 18.6, idle 6.9, muted 8.2 */
+  --menu-bg: #0b0912;
+  --menu-ink: #f9fafc;
+  --menu-idle: #9a96b0;
+  --menu-muted: #a9a6b8;
+  --menu-line: rgb(249 250 252 / 0.12);
+  --menu-residual: #241a4a;
+  --menu-hot-1: #7149c6;
+  --menu-hot-2: #ad86ff;
+  --menu-hot-3: #c86bfa;
+  --menu-hot-4: #5b8cff;
+  --menu-hot-5: #f3eeff;
+  --menu-particle: #cdb8ff;
   color-scheme: dark;
 }
 
@@ -68,6 +94,17 @@
   --color-accent-text: var(--accent-text);
   --color-accent-soft: var(--accent-soft);
   --color-focus: var(--focus);
+  --color-menu-bg: var(--menu-bg);
+  --color-menu-ink: var(--menu-ink);
+  --color-menu-idle: var(--menu-idle);
+  --color-menu-muted: var(--menu-muted);
+  --color-menu-line: var(--menu-line);
+  --color-menu-residual: var(--menu-residual);
+  --color-menu-hot-1: var(--menu-hot-1);
+  --color-menu-hot-2: var(--menu-hot-2);
+  --color-menu-hot-3: var(--menu-hot-3);
+  --color-menu-hot-4: var(--menu-hot-4);
+  --color-menu-hot-5: var(--menu-hot-5);
 
   /* --font-clash is unset when the Clash file is missing → Geist stands in (src/lib/fonts.ts) */
   --font-display: var(--font-clash, var(--font-geist-sans)), ui-sans-serif, system-ui, sans-serif;
@@ -101,12 +138,6 @@
   --color-paper-0: #ffffff;
   --color-paper-100: #f1eef8;
   --color-menu-950: #0b0912;
-  /* Menu overlay (06 §1) — the overlay is dark in both themes */
-  --color-menu-ink: #f9fafc;
-  --color-menu-idle: #9a96b0;
-  --color-menu-muted: #a9a6b8;
-  --color-menu-line: rgb(249 250 252 / 0.12);
-  --color-menu-residual: #241a4a;
   --color-blue-400: #5b8cff;
   --color-magenta-400: #c86bfa;
   --color-amber-300: #f2b76b;
