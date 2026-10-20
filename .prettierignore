@@ -1,0 +1,9 @@
+.next
+node_modules
+public
+pnpm-lock.yaml
+src/content/assets.generated.json
+src/lib/clash.generated.ts
+docs
+playwright-report
+test-results

@@ -1,0 +1,170 @@
+@import "tailwindcss";
+@import "./tokens.css";
+
+/* Theme is driven by next-themes' data-theme attribute, not prefers-color-scheme */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+/* Reduced motion = OS setting OR the site's motion toggle (MotionProvider sets data-motion) */
+@custom-variant motion-reduce {
+  @media (prefers-reduced-motion: reduce) {
+    @slot;
+  }
+  &:where([data-motion="reduce"] *) {
+    @slot;
+  }
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    min-height: 100dvh;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: var(--accent-ink);
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+}
+
+/* Mono label / index styles (02 §2.2) */
+@utility type-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  line-height: var(--text-label--line-height);
+  letter-spacing: var(--text-label--letter-spacing);
+  font-weight: var(--text-label--font-weight);
+  text-transform: uppercase;
+}
+
+@utility type-index {
+  font-family: var(--font-mono);
+  font-size: var(--text-index);
+  line-height: var(--text-index--line-height);
+  letter-spacing: var(--text-index--letter-spacing);
+  font-weight: var(--text-index--font-weight);
+}
+
+/* Frame column: 12 / 8 / 4 column grid with 24 / 20 / 16px gutters (02 §3) */
+@utility frame-col {
+  width: var(--frame-col);
+  margin-inline: auto;
+}
+
+@utility grid-frame {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  column-gap: 16px;
+  padding-inline: var(--frame-pad);
+  @media (width >= 40rem) {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    column-gap: 20px;
+  }
+  @media (width >= 64rem) {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: 24px;
+  }
+}
+
+/* Outside-frame texture: 1px lines every 4px, masked to the gutters only */
+.frame-texture {
+  background-image: repeating-linear-gradient(to bottom, var(--texture) 0 1px, transparent 1px 4px);
+  --gutter: calc((100% - var(--frame-col)) / 2);
+  mask-image: linear-gradient(
+    to right,
+    #000 0 var(--gutter),
+    transparent var(--gutter) calc(100% - var(--gutter)),
+    #000 calc(100% - var(--gutter))
+  );
+}
+
+/* [[TBD: …]] highlight, dev + preview only (see src/lib/tbd.tsx) */
+.tbd {
+  background-color: var(--accent-soft);
+  color: var(--accent-text);
+  outline: 1px dashed var(--accent);
+  outline-offset: 1px;
+  padding-inline: 0.2em;
+}
+
+/* Theme switch: circular reveal is drawn by ThemeToggle via the View Transitions API */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-new(root) {
+  z-index: 1;
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.15s !important;
+  }
+}
+[data-motion="reduce"] *,
+[data-motion="reduce"] *::before,
+[data-motion="reduce"] *::after {
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.15s !important;
+}
+
+/*
+ * Scroll-reveal elements start hidden once JS is known to run (html.js is set by an inline script),
+ * so server HTML doesn't flash before GSAP takes over. If hydration never happens they fade in after 3s.
+ */
+.js [data-reveal]:not([data-revealed]) {
+  opacity: 0;
+  animation: reveal-fallback 0.15s 3s forwards;
+}
+@keyframes reveal-fallback {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.75);
+  }
+}

@@ -1,0 +1,527 @@
+{
+  "ride.bike": {
+    "kind": "reference",
+    "src": null,
+    "placeholder": false
+  },
+  "ride.helmet": {
+    "kind": "reference",
+    "src": null,
+    "placeholder": false
+  },
+  "ride.outfit": {
+    "kind": "reference",
+    "src": null,
+    "placeholder": true
+  },
+  "ride.office": {
+    "kind": "reference",
+    "src": null,
+    "placeholder": true
+  },
+  "work.pureplantparadise.cover": {
+    "kind": "image",
+    "src": "/placeholders/work.pureplantparadise.cover.webp",
+    "width": 1600,
+    "height": 2000,
+    "placeholder": true,
+    "texture": "/placeholders/textures/work.pureplantparadise.cover-1024.webp"
+  },
+  "work.pureplantparadise.hero": {
+    "kind": "image",
+    "src": "/placeholders/work.pureplantparadise.hero.webp",
+    "width": 2400,
+    "height": 1350,
+    "placeholder": true
+  },
+  "work.pureplantparadise.screen-desktop-01": {
+    "kind": "image",
+    "src": "/placeholders/work.pureplantparadise.screen-desktop-01.webp",
+    "width": 2880,
+    "height": 1800,
+    "placeholder": true
+  },
+  "work.pureplantparadise.screen-desktop-02": {
+    "kind": "image",
+    "src": "/placeholders/work.pureplantparadise.screen-desktop-02.webp",
+    "width": 2880,
+    "height": 1800,
+    "placeholder": true
+  },
+  "work.pureplantparadise.screen-desktop-03": {
+    "kind": "image",
+    "src": "/placeholders/work.pureplantparadise.screen-desktop-03.webp",
+    "width": 2880,
+    "height": 1800,
+    "placeholder": true
+  },
+  "work.pureplantparadise.screen-desktop-04": {
+    "kind": "image",
+    "src": "/placeholders/work.pureplantparadise.screen-desktop-04.webp",
+    "width": 2880,
+    "height": 1800,
+    "placeholder": true
+  },
+  "work.pureplantparadise.screen-desktop-05": {
+    "kind": "image",
+    "src": "/placeholders/work.pureplantparadise.screen-desktop-05.webp",
+    "width": 2880,
+    "height": 1800,
+    "placeholder": true
+  },
+  "work.pureplantparadise.screen-desktop-06": {
+    "kind": "image",
+    "src": "/placeholders/work.pureplantparadise.screen-desktop-06.webp",
+    "width": 2880,
+    "height": 1800,
+    "placeholder": true
+  },
+  "work.pureplantparadise.screen-mobile-01": {
+    "kind": "image",
+    "src": "/placeholders/work.pureplantparadise.screen-mobile-01.webp",
+    "width": 1170,
+    "height": 2532,
+    "placeholder": true
+  },
+  "work.pureplantparadise.screen-mobile-02": {
+    "kind": "image",
+    "src": "/placeholders/work.pureplantparadise.screen-mobile-02.webp",
+    "width": 1170,
+    "height": 2532,
+    "placeholder": true
+  },
+  "work.pureplantparadise.screen-mobile-03": {
+    "kind": "image",
+    "src": "/placeholders/work.pureplantparadise.screen-mobile-03.webp",
+    "width": 1170,
+    "height": 2532,
+    "placeholder": true
+  },
+  "work.pureplantparadise.screen-mobile-04": {
+    "kind": "image",
+    "src": "/placeholders/work.pureplantparadise.screen-mobile-04.webp",
+    "width": 1170,
+    "height": 2532,
+    "placeholder": true
+  },
+  "work.genai-rag-platform.cover": {
+    "kind": "image",
+    "src": "/placeholders/work.genai-rag-platform.cover.webp",
+    "width": 1600,
+    "height": 2000,
+    "placeholder": true,
+    "texture": "/placeholders/textures/work.genai-rag-platform.cover-1024.webp"
+  },
+  "work.genai-rag-platform.hero": {
+    "kind": "image",
+    "src": "/placeholders/work.genai-rag-platform.hero.webp",
+    "width": 2400,
+    "height": 1350,
+    "placeholder": true
+  },
+  "work.genai-rag-platform.screen-desktop-01": {
+    "kind": "image",
+    "src": "/placeholders/work.genai-rag-platform.screen-desktop-01.webp",
+    "width": 2880,
+    "height": 1800,
+    "placeholder": true
+  },
+  "work.genai-rag-platform.screen-desktop-02": {
+    "kind": "image",
+    "src": "/placeholders/work.genai-rag-platform.screen-desktop-02.webp",
+    "width": 2880,
+    "height": 1800,
+    "placeholder": true
+  },
+  "work.genai-rag-platform.screen-desktop-03": {
+    "kind": "image",
+    "src": "/placeholders/work.genai-rag-platform.screen-desktop-03.webp",
+    "width": 2880,
+    "height": 1800,
+    "placeholder": true
+  },
+  "work.genai-rag-platform.screen-desktop-04": {
+    "kind": "image",
+    "src": "/placeholders/work.genai-rag-platform.screen-desktop-04.webp",
+    "width": 2880,
+    "height": 1800,
+    "placeholder": true
+  },
+  "work.genai-rag-platform.screen-desktop-05": {
+    "kind": "image",
+    "src": "/placeholders/work.genai-rag-platform.screen-desktop-05.webp",
+    "width": 2880,
+    "height": 1800,
+    "placeholder": true
+  },
+  "work.genai-rag-platform.screen-desktop-06": {
+    "kind": "image",
+    "src": "/placeholders/work.genai-rag-platform.screen-desktop-06.webp",
+    "width": 2880,
+    "height": 1800,
+    "placeholder": true
+  },
+  "work.genai-rag-platform.screen-mobile-01": {
+    "kind": "image",
+    "src": "/placeholders/work.genai-rag-platform.screen-mobile-01.webp",
+    "width": 1170,
+    "height": 2532,
+    "placeholder": true
+  },
+  "work.genai-rag-platform.screen-mobile-02": {
+    "kind": "image",
+    "src": "/placeholders/work.genai-rag-platform.screen-mobile-02.webp",
+    "width": 1170,
+    "height": 2532,
+    "placeholder": true
+  },
+  "work.genai-rag-platform.screen-mobile-03": {
+    "kind": "image",
+    "src": "/placeholders/work.genai-rag-platform.screen-mobile-03.webp",
+    "width": 1170,
+    "height": 2532,
+    "placeholder": true
+  },
+  "work.genai-rag-platform.screen-mobile-04": {
+    "kind": "image",
+    "src": "/placeholders/work.genai-rag-platform.screen-mobile-04.webp",
+    "width": 1170,
+    "height": 2532,
+    "placeholder": true
+  },
+  "work.a3dxyz-spare3d.cover": {
+    "kind": "image",
+    "src": "/placeholders/work.a3dxyz-spare3d.cover.webp",
+    "width": 1600,
+    "height": 2000,
+    "placeholder": true,
+    "texture": "/placeholders/textures/work.a3dxyz-spare3d.cover-1024.webp"
+  },
+  "work.a3dxyz-spare3d.hero": {
+    "kind": "image",
+    "src": "/placeholders/work.a3dxyz-spare3d.hero.webp",
+    "width": 2400,
+    "height": 1350,
+    "placeholder": true
+  },
+  "work.a3dxyz-spare3d.screen-desktop-01": {
+    "kind": "image",
+    "src": "/placeholders/work.a3dxyz-spare3d.screen-desktop-01.webp",
+    "width": 2880,
+    "height": 1800,
+    "placeholder": true
+  },
+  "work.a3dxyz-spare3d.screen-desktop-02": {
+    "kind": "image",
+    "src": "/placeholders/work.a3dxyz-spare3d.screen-desktop-02.webp",
+    "width": 2880,
+    "height": 1800,
+    "placeholder": true
+  },
+  "work.a3dxyz-spare3d.screen-desktop-03": {
+    "kind": "image",
+    "src": "/placeholders/work.a3dxyz-spare3d.screen-desktop-03.webp",
+    "width": 2880,
+    "height": 1800,
+    "placeholder": true
+  },
+  "work.a3dxyz-spare3d.screen-desktop-04": {
+    "kind": "image",
+    "src": "/placeholders/work.a3dxyz-spare3d.screen-desktop-04.webp",
+    "width": 2880,
+    "height": 1800,
+    "placeholder": true
+  },
+  "work.a3dxyz-spare3d.screen-desktop-05": {
+    "kind": "image",
+    "src": "/placeholders/work.a3dxyz-spare3d.screen-desktop-05.webp",
+    "width": 2880,
+    "height": 1800,
+    "placeholder": true
+  },
+  "work.a3dxyz-spare3d.screen-desktop-06": {
+    "kind": "image",
+    "src": "/placeholders/work.a3dxyz-spare3d.screen-desktop-06.webp",
+    "width": 2880,
+    "height": 1800,
+    "placeholder": true
+  },
+  "work.a3dxyz-spare3d.screen-mobile-01": {
+    "kind": "image",
+    "src": "/placeholders/work.a3dxyz-spare3d.screen-mobile-01.webp",
+    "width": 1170,
+    "height": 2532,
+    "placeholder": true
+  },
+  "work.a3dxyz-spare3d.screen-mobile-02": {
+    "kind": "image",
+    "src": "/placeholders/work.a3dxyz-spare3d.screen-mobile-02.webp",
+    "width": 1170,
+    "height": 2532,
+    "placeholder": true
+  },
+  "work.a3dxyz-spare3d.screen-mobile-03": {
+    "kind": "image",
+    "src": "/placeholders/work.a3dxyz-spare3d.screen-mobile-03.webp",
+    "width": 1170,
+    "height": 2532,
+    "placeholder": true
+  },
+  "work.a3dxyz-spare3d.screen-mobile-04": {
+    "kind": "image",
+    "src": "/placeholders/work.a3dxyz-spare3d.screen-mobile-04.webp",
+    "width": 1170,
+    "height": 2532,
+    "placeholder": true
+  },
+  "work.portfolio-v2.cover": {
+    "kind": "image",
+    "src": "/placeholders/work.portfolio-v2.cover.webp",
+    "width": 1600,
+    "height": 2000,
+    "placeholder": true,
+    "texture": "/placeholders/textures/work.portfolio-v2.cover-1024.webp"
+  },
+  "work.portfolio-v2.hero": {
+    "kind": "image",
+    "src": "/placeholders/work.portfolio-v2.hero.webp",
+    "width": 2400,
+    "height": 1350,
+    "placeholder": true
+  },
+  "work.portfolio-v2.screen-desktop-01": {
+    "kind": "image",
+    "src": "/placeholders/work.portfolio-v2.screen-desktop-01.webp",
+    "width": 2880,
+    "height": 1800,
+    "placeholder": true
+  },
+  "work.portfolio-v2.screen-desktop-02": {
+    "kind": "image",
+    "src": "/placeholders/work.portfolio-v2.screen-desktop-02.webp",
+    "width": 2880,
+    "height": 1800,
+    "placeholder": true
+  },
+  "work.portfolio-v2.screen-desktop-03": {
+    "kind": "image",
+    "src": "/placeholders/work.portfolio-v2.screen-desktop-03.webp",
+    "width": 2880,
+    "height": 1800,
+    "placeholder": true
+  },
+  "work.portfolio-v2.screen-desktop-04": {
+    "kind": "image",
+    "src": "/placeholders/work.portfolio-v2.screen-desktop-04.webp",
+    "width": 2880,
+    "height": 1800,
+    "placeholder": true
+  },
+  "work.portfolio-v2.screen-desktop-05": {
+    "kind": "image",
+    "src": "/placeholders/work.portfolio-v2.screen-desktop-05.webp",
+    "width": 2880,
+    "height": 1800,
+    "placeholder": true
+  },
+  "work.portfolio-v2.screen-desktop-06": {
+    "kind": "image",
+    "src": "/placeholders/work.portfolio-v2.screen-desktop-06.webp",
+    "width": 2880,
+    "height": 1800,
+    "placeholder": true
+  },
+  "work.portfolio-v2.screen-mobile-01": {
+    "kind": "image",
+    "src": "/placeholders/work.portfolio-v2.screen-mobile-01.webp",
+    "width": 1170,
+    "height": 2532,
+    "placeholder": true
+  },
+  "work.portfolio-v2.screen-mobile-02": {
+    "kind": "image",
+    "src": "/placeholders/work.portfolio-v2.screen-mobile-02.webp",
+    "width": 1170,
+    "height": 2532,
+    "placeholder": true
+  },
+  "work.portfolio-v2.screen-mobile-03": {
+    "kind": "image",
+    "src": "/placeholders/work.portfolio-v2.screen-mobile-03.webp",
+    "width": 1170,
+    "height": 2532,
+    "placeholder": true
+  },
+  "work.portfolio-v2.screen-mobile-04": {
+    "kind": "image",
+    "src": "/placeholders/work.portfolio-v2.screen-mobile-04.webp",
+    "width": 1170,
+    "height": 2532,
+    "placeholder": true
+  },
+  "work.fitness-landing.cover": {
+    "kind": "image",
+    "src": "/placeholders/work.fitness-landing.cover.webp",
+    "width": 1600,
+    "height": 2000,
+    "placeholder": true,
+    "texture": "/placeholders/textures/work.fitness-landing.cover-1024.webp"
+  },
+  "work.weathtemp.cover": {
+    "kind": "image",
+    "src": "/placeholders/work.weathtemp.cover.webp",
+    "width": 1600,
+    "height": 2000,
+    "placeholder": true,
+    "texture": "/placeholders/textures/work.weathtemp.cover-1024.webp"
+  },
+  "life.01": {
+    "kind": "image",
+    "src": "/placeholders/life.01.webp",
+    "width": 1600,
+    "height": 2000,
+    "placeholder": true,
+    "texture": "/placeholders/textures/life.01-1024.webp"
+  },
+  "life.02": {
+    "kind": "image",
+    "src": "/placeholders/life.02.webp",
+    "width": 1600,
+    "height": 2000,
+    "placeholder": true,
+    "texture": "/placeholders/textures/life.02-1024.webp"
+  },
+  "life.03": {
+    "kind": "image",
+    "src": "/placeholders/life.03.webp",
+    "width": 1600,
+    "height": 2000,
+    "placeholder": true,
+    "texture": "/placeholders/textures/life.03-1024.webp"
+  },
+  "life.04": {
+    "kind": "image",
+    "src": "/placeholders/life.04.webp",
+    "width": 1600,
+    "height": 2000,
+    "placeholder": true,
+    "texture": "/placeholders/textures/life.04-1024.webp"
+  },
+  "life.05": {
+    "kind": "image",
+    "src": "/placeholders/life.05.webp",
+    "width": 1600,
+    "height": 2000,
+    "placeholder": true,
+    "texture": "/placeholders/textures/life.05-1024.webp"
+  },
+  "life.06": {
+    "kind": "image",
+    "src": "/placeholders/life.06.webp",
+    "width": 1600,
+    "height": 2000,
+    "placeholder": true,
+    "texture": "/placeholders/textures/life.06-1024.webp"
+  },
+  "life.07": {
+    "kind": "image",
+    "src": "/placeholders/life.07.webp",
+    "width": 1600,
+    "height": 2000,
+    "placeholder": true,
+    "texture": "/placeholders/textures/life.07-1024.webp"
+  },
+  "life.08": {
+    "kind": "image",
+    "src": "/placeholders/life.08.webp",
+    "width": 1600,
+    "height": 2000,
+    "placeholder": true,
+    "texture": "/placeholders/textures/life.08-1024.webp"
+  },
+  "brand.chatgpt": {
+    "kind": "logo",
+    "src": null,
+    "placeholder": true,
+    "monogram": "CG"
+  },
+  "brand.claude": {
+    "kind": "logo",
+    "src": null,
+    "placeholder": true,
+    "monogram": "CL"
+  },
+  "brand.antigravity": {
+    "kind": "logo",
+    "src": null,
+    "placeholder": true,
+    "monogram": "AG"
+  },
+  "brand.manus": {
+    "kind": "logo",
+    "src": null,
+    "placeholder": true,
+    "monogram": "MA"
+  },
+  "brand.cursor": {
+    "kind": "logo",
+    "src": null,
+    "placeholder": true,
+    "monogram": "CU"
+  },
+  "brand.google-ai-mode": {
+    "kind": "logo",
+    "src": null,
+    "placeholder": true,
+    "monogram": "GA"
+  },
+  "brand.claude-code": {
+    "kind": "logo",
+    "src": null,
+    "placeholder": true,
+    "monogram": "CC"
+  },
+  "brand.codex": {
+    "kind": "logo",
+    "src": null,
+    "placeholder": true,
+    "monogram": "CX"
+  },
+  "brand.ollama": {
+    "kind": "logo",
+    "src": null,
+    "placeholder": true,
+    "monogram": "OL"
+  },
+  "brand.langchain": {
+    "kind": "logo",
+    "src": null,
+    "placeholder": true,
+    "monogram": "LC"
+  },
+  "file.resume": {
+    "kind": "file",
+    "src": null,
+    "placeholder": true
+  },
+  "font.clash": {
+    "kind": "font",
+    "src": null,
+    "placeholder": true
+  },
+  "sound.tick": {
+    "kind": "sound",
+    "src": null,
+    "placeholder": true
+  },
+  "sound.rev": {
+    "kind": "sound",
+    "src": null,
+    "placeholder": true
+  },
+  "sound.whoosh": {
+    "kind": "sound",
+    "src": null,
+    "placeholder": true
+  }
+}
